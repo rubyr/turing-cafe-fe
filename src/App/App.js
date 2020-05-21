@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Reservation from "../Reservation/Reservation";
 import Form from "../Form/Form";
+import { getReservations } from "../apiCalls";
 
 class App extends Component {
   constructor(props) {
@@ -13,9 +14,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const reservations = await fetch(
-      "http://localhost:3001/api/v1/reservations"
-    ).then((res) => res.json());
+    const reservations = await getReservations();
 
     this.setState({ reservations });
   }
