@@ -5,7 +5,7 @@ export const getReservations = async () => {
 };
 
 export const submitReservation = async (data) => {
-  fetch("http://localhost:3001/api/v1/reservations", {
+  return fetch("http://localhost:3001/api/v1/reservations", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

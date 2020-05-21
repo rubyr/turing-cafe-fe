@@ -27,3 +27,10 @@
   width: 80%;
   max-width: 900px;
 }
+
+.error {
+  background: #c33;
+  color: #eee;
+  display: block;
+  width: 100%;
+}

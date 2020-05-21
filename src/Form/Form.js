@@ -25,7 +25,12 @@ export default class Form extends Component {
 
   submit = (e) => {
     e.preventDefault();
-    this.props.submit(this.state);
+
+    const data = this.state;
+    data.number = Number(data.number);
+
+    this.props.submit(data);
+
     this.setState({
       name: "",
       date: "",

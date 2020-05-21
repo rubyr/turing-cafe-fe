@@ -23,18 +23,37 @@ class App extends Component {
     this.setState({ reservations });
   }
 
-  submit = (data) => {
-    data.number = Number(data.number);
-    this.setState({
-      reservations: [data, ...this.state.reservations],
-    });
-    submitReservation(data);
+  submit = async (data) => {
+    try {
+      const reservation = await submitReservation(data).then((r) =>
+        r.ok ? r.json() : r.status
+      );
+      if (typeof reservation === "object") {
+        this.setState({
+          reservations: [reservation, ...this.state.reservations],
+        });
+      } else {
+        this.showError(reservation);
+      }
+    } catch (e) {
+      this.showError();
+    }
   };
 
   remove = (id) => {
     const reservations = this.state.reservations.filter((r) => r.id !== id);
-    this.setState({ reservations });
     deleteReservation(id);
+    this.setState({ reservations });
+  };
+
+  showError = (code) => {
+    this.setState({
+      error: (
+        <span className="error">
+          We're sorry, your request could not be processed. (Error code: {code})
+        </span>
+      ),
+    });
   };
 
   render() {
@@ -43,6 +62,7 @@ class App extends Component {
     ));
     return (
       <div className="App">
+        {this.state.error}
         <h1 className="app-title">Turing Cafe Reservations</h1>
         <div className="resy-form">
           <Form submit={this.submit} />
