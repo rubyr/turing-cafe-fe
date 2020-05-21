@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import "./App.css";
 import Reservation from "../Reservation/Reservation";
 import Form from "../Form/Form";
-import { getReservations } from "../apiCalls";
+import {
+  getReservations,
+  submitReservation,
+  deleteReservation,
+} from "../apiCalls";
 
 class App extends Component {
   constructor(props) {
@@ -20,14 +24,17 @@ class App extends Component {
   }
 
   submit = (data) => {
+    data.number = Number(data.number);
     this.setState({
       reservations: [data, ...this.state.reservations],
     });
+    submitReservation(data);
   };
 
   remove = (id) => {
     const reservations = this.state.reservations.filter((r) => r.id !== id);
     this.setState({ reservations });
+    deleteReservation(id);
   };
 
   render() {

@@ -59,7 +59,7 @@ export default class Form extends Component {
           value={this.state.time}
         ></input>
         <input
-          type="text"
+          type="number"
           placeholder="No. of guests"
           onChange={this.onChange}
           name="number"
