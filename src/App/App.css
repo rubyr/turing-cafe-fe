@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
-
 .App {
   display: flex;
   flex-direction: column;
@@ -16,4 +15,15 @@
   color: teal;
   font-family: 'Pacifico', cursive;
   font-size: 50px;
+}
+
+.resy-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.resy-form {
+  width: 80%;
+  max-width: 900px;
 }

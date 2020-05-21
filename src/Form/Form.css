@@ -1,0 +1,19 @@
+.Form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.Form input {
+  border: 1px solid teal;
+  line-height: 20px;
+  font-size: 16px;
+  padding-left: 3px;
+}
+
+.Form button {
+  background: teal;
+  border: none;
+  color: white;
+}
